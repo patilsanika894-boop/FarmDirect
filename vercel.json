@@ -3,14 +3,17 @@
   "installCommand": "cd frontend && npm ci",
   "outputDirectory": "frontend/dist",
   "framework": "vite",
-  "rewrites": [
+  "env": {
+    "NODE_OPTIONS": "--max_old_space_size=3000"
+  },
+  "routes": [
     {
-      "source": "/api/:path*",
+      "src": "/api/:path*",
       "destination": "http://localhost:5000/api/:path*"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
